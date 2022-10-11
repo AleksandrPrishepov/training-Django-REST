@@ -20,12 +20,8 @@ from rest_framework import routers
 from women.views import *
 
 
-router = routers.SimpleRouter()
-router.register(r'women', WomenViewSet)
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls))
-    # path('api/v1/womenlist/', WomenViewSet.as_view({"get":"list", "post":"create"})),
-    # path('api/v1/womenlist/<int:pk>/', WomenViewSet.as_view({"put":"update", "delete":""}))
+    path('api/v1/womenlist/<int:pk>/', WomenAPIUpdate.as_view()),
+    path('api/v1/womendelete/<int:pk>/', WomenPIDestroy.as_view())
 ]
